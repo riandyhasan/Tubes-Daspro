@@ -31,8 +31,8 @@ for line in lines:
   real_values = convert_array_data_to_real_values(array_of_data)
   data_akun.append(real_values)
 
-print("================================\n")
-print("============ LOGIN =============\n")
+print("================================")
+print("============ LOGIN =============")
 print("================================\n")
 
 baris = len(lines)
