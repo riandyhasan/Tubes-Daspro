@@ -10,24 +10,33 @@ def convert_array_data_to_real_values(array_data):
       arr_cpy[i] = int(arr_cpy[i])
   return arr_cpy
 
-def convert_line_to_data(line):
-  raw_array_of_data = line.split(";")
-  array_of_data = [data.strip() for data in raw_array_of_data]
-  return array_of_data
+def convert_string_to_array(line):
+  word = ""
+  delete = ";"
+  line += delete
+  l = len(line)
+  new_list = []
+  for i in range(l):
+      if (line[i] != delete):
+          word += line[i]
+      else:
+          if (len(word) != 0):
+              new_list.append(word)
+          word = ""
+  return new_list
 
 def validate_account(log_username, log_password, data, n):
   idx = -1
   for i in range (n):
     if log_username == data[i][1] and log_password  == data[i][4]:
       idx = i
-
   return (idx)
 
 raw_header = lines.pop(0)
-header = convert_line_to_data(raw_header)
+header = convert_string_to_array(raw_header)
 data_akun = []
 for line in lines:
-  array_of_data = convert_line_to_data(line)
+  array_of_data = convert_string_to_array(line)
   real_values = convert_array_data_to_real_values(array_of_data)
   data_akun.append(real_values)
 
