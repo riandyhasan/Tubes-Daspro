@@ -25,6 +25,14 @@ def convert_string_to_array(line):
           word = ""
   return new_list
 
+def delete_n(role):
+  if len(role) == 6:
+    role = "admin"
+  elif len(role) == 5:
+    role = "user"
+
+  return role
+
 def username_availability(reg_username, data_username):
     available = True
     if (reg_username == data_username):
@@ -43,6 +51,8 @@ for line in lines:
   array_of_data = convert_string_to_array(line)
   real_values = convert_array_data_to_real_values(array_of_data)
   data_akun.append(real_values)
+for i in range (len(lines)):
+  data_akun[i][5] = delete_n(data_akun[i][5])
 
 print("===================================")
 print("============ REGISTER =============")
@@ -62,6 +72,16 @@ for i in range (len(data_akun)):
 if can:
     data_akun.append(modify_data(id, username, name, address, password, "user"))
 
+def convert_datas_to_string():
+  string_data = ";".join(header) + "\n"
+  for arr_data in data_akun:
+    arr_data_all_string = [str(var) for var in arr_data]
+    string_data += ";".join(arr_data_all_string)
+    string_data += "\n"
+  return string_data
+
+datas_as_string = convert_datas_to_string()
+print(datas_as_string)
 
         
     

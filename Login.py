@@ -32,6 +32,15 @@ def validate_account(log_username, log_password, data, n):
       idx = i
   return (idx)
 
+def delete_n(role):
+  if len(role) == 6:
+    role = "admin"
+  elif len(role) == 5:
+    role = "user"
+
+  return role
+
+
 raw_header = lines.pop(0)
 header = convert_string_to_array(raw_header)
 data_akun = []
@@ -39,6 +48,8 @@ for line in lines:
   array_of_data = convert_string_to_array(line)
   real_values = convert_array_data_to_real_values(array_of_data)
   data_akun.append(real_values)
+for i in range (len(lines)):
+  data_akun[i][5] = delete_n(data_akun[i][5])
 
 print("================================")
 print("============ LOGIN =============")
