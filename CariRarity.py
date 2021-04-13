@@ -39,26 +39,3 @@ for line in lines:
   array_of_data = convert_string_to_array(line)
   real_values = convert_array_data_to_real_values(array_of_data)
   data_akun.append(real_values)
-
-print("================================")
-print("============ LOGIN =============")
-print("================================\n")
-
-baris = len(lines)
-username_login = input("Masukkan username: ")
-pass_login = input("Masukkan password: ")
-cek = False
-
-while not(cek):
-  if validate_account(username_login, pass_login, data_akun, baris) > -1:
-    idx_nama = validate_account(username_login, pass_login, data_akun, baris)
-    print("Halo {}! Selamat datang di AiTeBeh!".format(data_akun[idx_nama][2]))
-    cek = True
-  else:
-    print("Username atau password salah! Silahkan login ulang!\n")
-    username_login = input("Masukkan username: ")
-    pass_login = input("Masukkan password: ")
-
-
-
-    
