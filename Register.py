@@ -25,13 +25,9 @@ def convert_string_to_array(line):
           word = ""
   return new_list
 
-def delete_n(role):
-  if len(role) == 6:
-    role = "admin"
-  elif len(role) == 5:
-    role = "user"
-
-  return role
+def delete_n(word):
+    word = word.replace('\n','')
+    return word
 
 def username_availability(reg_username, data_username):
     available = True
