@@ -1,3 +1,6 @@
+from Hashing import *
+
+
 f = open("user.csv","r")
 raw_lines = f.readlines()
 f.close()
@@ -66,6 +69,7 @@ for i in range (len(data_akun)):
         can = False
 
 if can:
+    password = SHA3(256)._hash(password)
     data_akun.append(modify_data(id, username, name, address, password, "user"))
 
 def convert_datas_to_string():
