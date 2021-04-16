@@ -53,24 +53,25 @@ for line in lines:
 for i in range (len(lines)):
   data_akun[i][5] = delete_n(data_akun[i][5])
 
-print("===================================")
-print("============ REGISTER =============")
-print("===================================\n")
+def run_register():
+  print("===================================")
+  print("============ REGISTER =============")
+  print("===================================\n")
 
-id = 165000 + len(data_akun)
-name = input("Masukkan nama: ")
-username = input("Masukkan username: ")
-password = input("Masukkan password: ")
-address = input("Masukkan alamat: ")
-can = True
+  id = 165000 + len(data_akun)
+  name = input("Masukkan nama: ")
+  username = input("Masukkan username: ")
+  password = input("Masukkan password: ")
+  address = input("Masukkan alamat: ")
+  can = True
 
-for i in range (len(data_akun)):
-    if not(username_availability(username, data_akun[i][1])):
-        can = False
+  for i in range (len(data_akun)):
+      if not(username_availability(username, data_akun[i][1])):
+          can = False
 
-if can:
-    password = SHA3(256)._hash(password)
-    data_akun.append(modify_data(id, username, name, address, password, "user"))
+  if can:
+      password = SHA3(256)._hash(password)
+      data_akun.append(modify_data(id, username, name, address, password, "user"))
 
 def convert_datas_to_string():
   string_data = ";".join(header) + "\n"
@@ -80,8 +81,9 @@ def convert_datas_to_string():
     string_data += "\n"
   return string_data
 
-datas_as_string = convert_datas_to_string()
-print(datas_as_string)
+def print():
+  datas_as_string = convert_datas_to_string()
+  print(datas_as_string)
 
         
     

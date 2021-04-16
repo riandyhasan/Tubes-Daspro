@@ -40,22 +40,23 @@ for line in lines:
   real_values = convert_array_data_to_real_values(array_of_data)
   data_gadget.append(real_values)
 
-print("======================================")
-print("============ CARI RARITY =============")
-print("======================================\n")
+def run_carirarity():
+  print("======================================")
+  print("============ CARI RARITY =============")
+  print("======================================\n")
 
-rare = input("Masukkan rarity: ")
+  rare = input("Masukkan rarity: ")
 
-print("\nHasil pencarian:")
-count = 0
-for i in range (len(lines)):
-    if rarity_check(rare, data_gadget[i][4]):
-        print("\nNama             : {}".format(data_gadget[i][1]))
-        print("Deskripsi        : {}".format(data_gadget[i][2]))
-        print("Jumlah           : {}".format(data_gadget[i][3]))
-        print("Rarity           : {}".format(data_gadget[i][4]))
-        print("Tahun Ditemukan  : {}".format(data_gadget[i][5]))
-        count += 1
+  print("\nHasil pencarian:")
+  count = 0
+  for i in range (len(lines)):
+      if rarity_check(rare, data_gadget[i][4]):
+          print("\nNama             : {}".format(data_gadget[i][1]))
+          print("Deskripsi        : {}".format(data_gadget[i][2]))
+          print("Jumlah           : {}".format(data_gadget[i][3]))
+          print("Rarity           : {}".format(data_gadget[i][4]))
+          print("Tahun Ditemukan  : {}".format(data_gadget[i][5]))
+          count += 1
 
-if count == 0:
-    print("Tidak ada gadget yang ditemukan")
+  if count == 0:
+      print("Tidak ada gadget yang ditemukan")
