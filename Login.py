@@ -32,14 +32,13 @@ def validate_account(log_username, log_password, data, n):
       idx = i
   return (idx)
 
-def delete_n(role):
-  if len(role) == 6:
-    role = "admin"
-  elif len(role) == 5:
-    role = "user"
+def delete_n(word):
+  if len(word) == 6:
+    word = "admin"
+  elif len(word) == 5:
+    word = "user"
 
-  return role
-
+  return word
 
 raw_header = lines.pop(0)
 header = convert_string_to_array(raw_header)
@@ -65,11 +64,14 @@ def run_login():
     if validate_account(username_login, pass_login, data_akun, baris) > -1:
       idx_nama = validate_account(username_login, pass_login, data_akun, baris)
       print("Halo {}! Selamat datang di AiTeBeh!".format(data_akun[idx_nama][2]))
+      role = data_akun[idx_nama][5]
       cek = True
     else:
       print("Username atau password salah! Silahkan login ulang!\n")
       username_login = input("Masukkan username: ")
       pass_login = input("Masukkan password: ")
+  
+  return role
 
 
 

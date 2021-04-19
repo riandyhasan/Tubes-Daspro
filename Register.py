@@ -81,11 +81,9 @@ def convert_datas_to_string():
     string_data += "\n"
   return string_data
 
-def print():
+def print_data():
   datas_as_string = convert_datas_to_string()
   print(datas_as_string)
-
-        
     
 
 

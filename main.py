@@ -5,11 +5,11 @@ from Register import *
 from TambahItem import *
 import os
 
-run_login()
+role = run_login()
 
 cmd = input(">>> ")
 
-def command(cmd):
+def command_admin(cmd):
     if cmd == "register":
         run_register()
     elif cmd == "carirarity":
@@ -18,7 +18,22 @@ def command(cmd):
         run_caritahun()
     elif cmd == "tambahitem":
         run_tambahitem()
+    else:
+        print("Input tidak valid!")
 
-while cmd != "exit":
-    command(cmd)
-    cmd = input(">>> ")
+def command_user(cmd):
+    if cmd == "carirarity":
+        run_carirarity()
+    elif cmd == "caritahun":
+        run_caritahun()
+    else:
+        print("Input tidak valid!")
+
+if role == "admin":
+    while cmd != "exit":
+        command_admin(cmd)
+        cmd = input(">>> ")
+elif role == "user":
+    while cmd != "exit":
+        command_user(cmd)
+        cmd = input(">>> ")
