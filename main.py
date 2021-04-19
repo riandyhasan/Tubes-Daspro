@@ -1,8 +1,8 @@
-from CariRarity import *
-from CariTahun import *
-from Login import *
-from Register import *
-from TambahItem import *
+from CariRarity import run_carirarity
+from CariTahun import run_caritahun
+from Login import run_login
+from Register import run_register
+from TambahItem import run_tambahitem
 import os
 
 role = run_login()
