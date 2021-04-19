@@ -6,12 +6,12 @@ import pandas as pd
 
 os.chdir('../Desktop')
 
-df1 = pd.read_csv(os.getcwd() + '\\consumable_history.csv')
-df2 = pd.read_csv(os.getcwd() + '\\consumable.csv')
-df3 = pd.read_csv(os.getcwd() + '\\gadget_borrow_history.csv')
-df4 = pd.read_csv(os.getcwd() + '\\gadget_return_history.csv')
-df5 = pd.read_csv(os.getcwd() + '\\User.csv')
-df6 = pd.read_csv(os.getcwd() + '\\gadget.csv')
+df1 = open(os.getcwd() + '\\consumable_history.csv','r+')
+df2 = open(os.getcwd() + '\\consumable.csv','r+')
+df3 = open(os.getcwd() + '\\gadget_borrow_history.csv','r+')
+df4 = open(os.getcwd() + '\\gadget_return_history.csv','r+')
+df5 = open(os.getcwd() + '\\User.csv', 'r+')
+df6 = open(os.getcwd() + '\\gadget.csv', 'r+')
 
 
 namafolder = input('Masukkan nama folder penyimpanan: ')
