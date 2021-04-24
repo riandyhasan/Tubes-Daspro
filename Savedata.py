@@ -2,7 +2,6 @@ import os
 
 def checkFolder(n):
     return n in os.listdir()
-#mengecek apabila nama folder sudah ada sebelumnya
 
 def newFolder(n):
     os.makedirs(n)
@@ -56,6 +55,7 @@ if checkFolder(namafolder):
 else:
     newFolder(namafolder)
     saveFolder(namafolder)
+    print ("Saving...")
     print("Data telah disimpan pada folder {}!".format(namafolder))
     
 
