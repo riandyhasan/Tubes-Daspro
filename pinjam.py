@@ -20,7 +20,7 @@ def convert_array_data_to_real_values(array_data, n):
 def convert_array_data_to_real_values_history(array_data, n):
   arr_cpy = array_data[:]
   for i in range(n):
-    if(i == 0) or (i == 2) or (i == 4):
+    if(i == 0) or (i == 1) or (i == 4):
       arr_cpy[i] = int(arr_cpy[i])
   return arr_cpy
 
