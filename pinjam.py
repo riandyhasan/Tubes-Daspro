@@ -64,7 +64,7 @@ def pinjam():
     if (id[0] == "G"):
         for i in range (len(datas_gadget)):
             if (datas_gadget[i][0] == id):
-                cek_id = True
+                cek_id = False
         if (cek_id):
             print("Tidak ada item dengan ID tersebut.")
         else:
