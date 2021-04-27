@@ -55,7 +55,7 @@ def hapusitem():
     if (id[0] == "G"):
         for i in range (len(datas_gadget)):
             if (datas_gadget[i][0] == id):
-                id_check = True
+                id_check = False
         if (id_check):
             print("Tidak ada item dengan ID tersebut.")
         else:
@@ -69,7 +69,7 @@ def hapusitem():
     elif (id[0] == "C"):
         for i in range (len(datas_consum)):
             if (datas_consum[i][0] == id):
-                id_check = True
+                id_check = False
         if (id_check):
             print("Tidak ada item dengan ID tersebut.")
         else:
