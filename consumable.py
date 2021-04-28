@@ -1,3 +1,5 @@
+import datetime
+
 f = open("consumable.csv", "r")
 raw_lines = f.readlines()
 f.close()
@@ -25,22 +27,6 @@ def convert_string_to_array(line):
             word = ""
     return new_list
 
-def validasi(id, jumlah, list):
-    kode = [i[0] for i in list[:]]
-    total_awal = [i[3] for i in list[:]]
-    nama = [i[1] for i in list[:]]
-
-    if (id in kode):
-        posisi = kode.index(id)
-        total_akhir = int(total_awal[posisi]) - jumlah
-        if total_akhir < 0:
-            return "Melebihi jumlah barang yang tersedia"
-        else:
-            list[posisi][3] = total_akhir
-            return ("Item {} (x{}) telah berhasil diambil!".format(nama[posisi], jumlah))
-    else:
-        return "ID tidak valid"
-    
 
 raw_header = lines.pop(0)
 header = convert_string_to_array(raw_header)
@@ -50,10 +36,41 @@ for line in lines:
   real_values = convert_array_data_to_real_values(array_of_data,5)
   data.append(real_values)
 
+def printing():
+    id = input("Masukkan ID item: ")
+    
+    kode = [i[0] for i in data[:]]
+    total_awal = [i[3] for i in data[:]]
+    nama = [i[1] for i in data[:]]
 
-id = input("Masukkan ID item: ")
-jumlah = int(input("Jumlah: "))
-tanggal = input("Tanggal permintaan: ")
-print(validasi(id,jumlah, data))
+    if (id not in kode):
+        print("ID tidak valid")
+        coba_ulang = input("Ingin mencoba lagi? Ketik (y) jika ingin mencoba ulang: ")
+        if coba_ulang == "y" or "Y":
+            return printing()
+    else:     
+        jumlah = int(input("Jumlah: "))
+        posisi = kode.index(id)
+        total_akhir = total_awal[posisi] - jumlah
+        if total_akhir < 0:
+            print("\nMelebihi jumlah barang yang tersedia")
+            print("Jumlah {} yang tersedia adalah {} ".format(nama[posisi], total_awal[posisi]))
+            print("Pastikan jumlah barang yang dimasukkan sesuai dengan jumlah barang yang tersedia\n")
+            coba_ulang = input("Ingin mencoba lagi? Ketik (y) jika ingin mencoba ulang:")
+            if coba_ulang == "y" or "Y":
+                return printing()
+        else:
+            Kondisi = False
+            while (Kondisi == False):
+                tanggal = input("Tanggal permintaan (dd/mm/YYYY): ")
+                try:
+                    if tanggal == datetime.datetime.strptime(tanggal, "%d/%m/%Y").strftime('%Y-%m-%d'):
+                        raise ValueError
+                    Kondisi = True
+                except ValueError:
+                    print("Format tanggal tidak sesuai, silakan ketik lagi dengan format yang sesuai (format:dd/mm/YYYY)")
+                    Kondisi = False
+            data[posisi][3] = total_akhir
+            print("Item {} (x{}) telah berhasil diambil!".format(nama[posisi], jumlah))
 
-print(data)
+printing()
