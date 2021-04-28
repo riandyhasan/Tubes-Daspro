@@ -61,6 +61,7 @@ add_id_history = id_history + 1
 def pinjam():
     id = input("Masukkan ID item: ")
     cek_id = False
+    is_returned = "Tidak"
     if (id[0] == "G"):
         for i in range (len(datas_gadget)):
             if (datas_gadget[i][0] == id):
@@ -72,8 +73,8 @@ def pinjam():
             jumlah_peminjaman = int(input("Masukkan Jumlah: "))
             jumlah_akhir_gadget = datas_gadget[i][3] - jumlah_peminjaman
             datas_gadget[i][3] = jumlah_akhir_gadget
-            new_history = [add_id_history, username_login, id, tanggal_peminjaman, jumlah_peminjaman]
+            new_history = [add_id_history, username_login, id, tanggal_peminjaman, jumlah_peminjaman, is_returned]
             history_data_gadget.append(new_history)
-            print("Item" + datas_gadget[i][1] + "(x" + jumlah_peminjaman + ") berhasil dipinjam!")
+            print("Item" + datas_gadget[i][1] + "(x" + str(jumlah_peminjaman) + ") berhasil dipinjam!")
     else:
         print("Gagal menambahkan item karena ID tidak valid")
