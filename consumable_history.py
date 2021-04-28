@@ -50,6 +50,6 @@ for i in range(len(data_consumable_return_copy_sorted)):
     print("\n")
     time.sleep(2)
     if (i==4):
-        user_input = input("Apakah Anda ingin mengetahui entry data lainnya?(Ketik 't' untuk 'tidak' dan ketik 'apapun' untuk 'melanjutkan'): ")
+        user_input = input("Apakah Anda ingin mengetahui entry data lainnya?(Ketik 't' untuk 'tidak' dan ketik apapun untuk melanjutkan): ")
         if (user_input == 't'):
             break
