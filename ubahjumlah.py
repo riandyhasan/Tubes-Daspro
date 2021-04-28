@@ -64,11 +64,11 @@ def ubahjumlah():
             if (change_gadget > 0 ):
                 jumlah_gadget = change_gadget + datas_gadget[i][3]
                 datas_gadget[i][3] = jumlah_gadget
-                print(change_gadget + datas_gadget[i][3] + "berhasil ditambahkan. Stok sekarang: " + jumlah_gadget)
+                print(str(change_gadget) + " " + datas_gadget[i][1] + " berhasil ditambahkan. Stok sekarang: " + str(jumlah_gadget))
             else:
                 jumlah_gadget = datas_gadget[i][3] - change_gadget
                 datas_gadget[i][3] = jumlah_gadget
-                print(change_gadget + datas_gadget[i][2] + "berhasil dibuang. Stok sekarang: " + jumlah_gadget)
+                print(str(change_gadget) + " " + datas_gadget[i][1] + " berhasil dibuang. Stok sekarang: " + str(jumlah_gadget))
     elif (id[0] == "C"):
         for i in range (len(datas_consum)):
             if (datas_consum[i][0] == id):
@@ -81,10 +81,11 @@ def ubahjumlah():
             if (change_consumable > 0 ):
                 jumlah_consumable = change_consumable + datas_consum[i][3]
                 datas_consum[i][3] = jumlah_consumable
-                print(change_consumable + datas_consum[i][2] + "berhasil ditambahkan. Stok sekarang: " + jumlah_consumable)
+                print(str(change_consumable) + " " + datas_consum[i][1] + " berhasil ditambahkan. Stok sekarang: " + str(jumlah_consumable))
             else:
                 jumlah_consumable = datas_consum[i][3] - change_consumable
                 datas_consum[i][3] = jumlah_consumable
-                print(change_consumable + datas_consum[i][2] + "berhasil dibuang. Stok sekarang: " + jumlah_consumable)
+                print(str(change_consumable) + " " + datas_consum[i][1] + " berhasil dibuang. Stok sekarang: " + str(jumlah_consumable))
     else:
         print("Gagal menambahkan item karena ID tidak valid")
+
