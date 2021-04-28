@@ -46,8 +46,9 @@ def printing():
     if (id not in kode):
         print("ID tidak valid")
         coba_ulang = input("Ingin mencoba lagi? Ketik (y) jika ingin mencoba ulang: ")
-        if coba_ulang == "y" or "Y":
+        if (coba_ulang == "y") or (coba_ulang == "Y"):
             return printing()
+ 
     else:     
         jumlah = int(input("Jumlah: "))
         posisi = kode.index(id)
@@ -56,9 +57,10 @@ def printing():
             print("\nMelebihi jumlah barang yang tersedia")
             print("Jumlah {} yang tersedia adalah {} ".format(nama[posisi], total_awal[posisi]))
             print("Pastikan jumlah barang yang dimasukkan sesuai dengan jumlah barang yang tersedia\n")
-            coba_ulang = input("Ingin mencoba lagi? Ketik (y) jika ingin mencoba ulang:")
-            if coba_ulang == "y" or "Y":
+            coba_ulang = input("Ingin mencoba lagi? Ketik (y) jika ingin mencoba ulang: ")
+            if (coba_ulang == "y") or (coba_ulang == "Y"):
                 return printing()
+ 
         else:
             Kondisi = False
             while (Kondisi == False):
