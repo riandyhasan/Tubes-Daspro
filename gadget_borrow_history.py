@@ -53,7 +53,7 @@ header = convert_string_to_array(raw_header)
 data_gadget_borrow = []
 for line in lines:
   array_of_data = convert_string_to_array(line)
-  real_values = convert_array_data_to_real_values(array_of_data, 5)
+  real_values = convert_array_data_to_real_values(array_of_data, len(lines))
   data_gadget_borrow.append(real_values)
 
 raw_header2 = lines2.pop(0)
@@ -61,7 +61,7 @@ header2 = convert_string_to_array(raw_header2)
 data_user = []
 for line in lines2:
   array_of_data2 = convert_string_to_array(line)
-  real_values2 = convert_array_data_to_real_values2(array_of_data2, 6)
+  real_values2 = convert_array_data_to_real_values2(array_of_data2, len(lines2))
   data_user.append(real_values2)
 
 raw_header3 = lines3.pop(0)
@@ -88,12 +88,10 @@ for i in range(len(lines)):
     id_cek_gadget = id_gadget.index(id_gadget_pinjam[i])
     print("Nama Gadget: ", data_gadget[id_cek_gadget][1])
     print("Tanggal Peminjaman: ", data_gadget_borrow_copy_sorted[i][3])
-    print("Jumlah: ",data_gadget_borrow_copy_sorted[i][-1])
+    print("Jumlah: ",data_gadget_borrow_copy_sorted[i][-2])
     print("\n")
     time.sleep(2)
     if (i==4):
-        user_input = input("Apakah Anda ingin mengetahui entry data lainnya?(Ketik 't' untuk 'tidak' dan ketik 'apapun' untuk 'melanjutkan'): ")
+        user_input = input("Apakah Anda ingin mengetahui entry data lainnya?(Ketik 't' untuk 'tidak' dan ketik apapun untuk melanjutkan): ")
         if (user_input == 't'):
             break
-        
-
