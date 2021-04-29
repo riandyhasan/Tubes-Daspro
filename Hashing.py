@@ -1,11 +1,11 @@
 # algorithm reference: 'https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf'
+from readcsv import data_user
+
 
 class SHA3():
 
     def __init__(self, output=224):
-        ''' SHA3 class, choose output bit range from(224, 256, 384, 512)
-            the state contains 1600 bits for standard SHA3
-        '''
+  
         rate = {224: 1152, 256: 1088, 384: 832, 512: 576}
         self.output = output
         assert self.output in rate, 'Invalid bit length'

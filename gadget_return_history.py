@@ -7,7 +7,7 @@ f.close()
 line = [raw_line.replace('"', "") for raw_line in raw_lines]
 lines = [i.replace("\n","") for i in line]
 
-g = open("User.csv", "r")
+g = open("user.csv", "r")
 raw_lines = g.readlines()
 g.close()
 line2 = [raw_line.replace('"', "") for raw_line in raw_lines]
@@ -69,8 +69,6 @@ for line in lines:
   array_of_data = convert_string_to_array(line)
   real_values = convert_array_data_to_real_values(array_of_data, len(lines))
   data_gadget_return.append(real_values)
-
-
 
 raw_header2 = lines2.pop(0)
 header2 = convert_string_to_array(raw_header2)

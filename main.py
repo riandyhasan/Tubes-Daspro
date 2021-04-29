@@ -1,21 +1,21 @@
-from CariRarity import run_carirarity
-from CariTahun import run_caritahun
-from Login import run_login
-from Register import run_register
+from carirarity import carirarity
+from caritahun import caritahun
+from login import login
+from register import register
 from TambahItem import run_tambahitem
 import os
 
-role = run_login()
+role = login()
 
 cmd = input(">>> ")
 
 def command_admin(cmd):
     if cmd == "register":
-        run_register()
+        register()
     elif cmd == "carirarity":
-        run_carirarity()
+        carirarity()
     elif cmd == "caritahun":
-        run_caritahun()
+        caritahun()
     elif cmd == "tambahitem":
         run_tambahitem()
     else:
@@ -23,9 +23,9 @@ def command_admin(cmd):
 
 def command_user(cmd):
     if cmd == "carirarity":
-        run_carirarity()
+        carirarity()
     elif cmd == "caritahun":
-        run_caritahun()
+        caritahun()
     else:
         print("Input tidak valid!")
 
