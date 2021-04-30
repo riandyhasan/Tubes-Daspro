@@ -69,11 +69,12 @@ def pinjam():
         if (cek_id):
             print("Tidak ada item dengan ID tersebut.")
         else:
+            username = input("Masukkan Username: ")
             tanggal_peminjaman = input("Tanggal peminjaman: ")
             jumlah_peminjaman = int(input("Masukkan Jumlah: "))
             jumlah_akhir_gadget = datas_gadget[i][3] - jumlah_peminjaman
             datas_gadget[i][3] = jumlah_akhir_gadget
-            new_history = [add_id_history, username_login, id, tanggal_peminjaman, jumlah_peminjaman, is_returned]
+            new_history = [add_id_history, username, id, tanggal_peminjaman, jumlah_peminjaman, is_returned]
             history_data_gadget.append(new_history)
             print("Item" + datas_gadget[i][1] + "(x" + str(jumlah_peminjaman) + ") berhasil dipinjam!")
     else:
