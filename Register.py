@@ -1,5 +1,5 @@
 from hashing import *
-from readcsv import data_user, header3
+from csv import data_user
 
 def username_availability(reg_username, data_username):
     available = True
@@ -26,8 +26,10 @@ def check_availability():
 
   if can:
     password = SHA3(256)._hash(password)
+    name = name.title()
     data_user.append(modify_data(id, username, name, address, password, "user"))
     print ("Register telah berhasil!")
+    return data_user
     
   else:
     user_input = input("\nUsername telah digunakan! \nIngin mengulang proses register lagi? (Ketik 't' untuk 'tidak' dan apapun untuk melanjutkan): ")
@@ -40,17 +42,7 @@ def register():
   print("============ REGISTER =============")
   print("===================================\n")
 
-  check_availability()
+  data_user = check_availability()
 
-
-
-def convert_datas_to_string():
-  string_data = ";".join(header3) + "\n"
-  for arr_data in data_user:
-    arr_data_all_string = [str(var) for var in arr_data]
-    string_data += ";".join(arr_data_all_string)
-    string_data += "\n"
-  return string_data
-
-
+  return data_user
 

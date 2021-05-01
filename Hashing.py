@@ -1,6 +1,4 @@
 # algorithm reference: 'https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf'
-from readcsv import data_user
-
 
 class SHA3():
 

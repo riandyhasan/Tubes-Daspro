@@ -1,4 +1,4 @@
-from readcsv import data_gadget
+from csv import data_gadget
 
 def rarity_check(find, gadget_rarity):
     check = False

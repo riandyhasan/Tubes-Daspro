@@ -1,4 +1,4 @@
-from readcsv import data_user
+from csv import data_user
 from hashing import *
 
 def validate_account(log_username, log_password, data, n):
@@ -24,6 +24,7 @@ def login():
       idx_nama = validate_account(username_login, pass_login, data_user, baris)
       print("Halo {}! Selamat datang di AiTeBeh!".format(data_user[idx_nama][2]))
       role = data_user[idx_nama][5]
+      id_user = data_user[idx_nama][0]
       if role == "admin":
         print("Anda login sebagai admin!")
       else:
@@ -34,7 +35,7 @@ def login():
       username_login = input("Masukkan username: ")
       pass_login = input("Masukkan password: ")
   
-  return role
+  return role, id_user
 
 
 
