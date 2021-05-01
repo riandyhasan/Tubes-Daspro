@@ -1,5 +1,3 @@
-from csv import data_gadget
-
 def year_check(sign,year, gadget_year):
     check = False
     if (sign == "="):
@@ -20,7 +18,7 @@ def year_check(sign,year, gadget_year):
 
     return check
 
-def yearfind():
+def yearfind(data_gadget):
     year = int(input("\nMasukkan tahun: "))
     category = input("Masukkan kategori: ")
 
@@ -39,14 +37,14 @@ def yearfind():
         print("Tidak ada gadget yang ditemukan")
 
 
-def caritahun():
+def caritahun(data_gadget):
     print("======================================")
     print("============ CARI TAHUN ==============")
     print("======================================")
 
-    yearfind()
+    yearfind(data_gadget)
 
     user_input = input("\nApakah Anda ingin mengetahui entry data lainnya?(Ketik 't' untuk 'tidak' dan ketik apapun untuk melanjutkan): ")
     while user_input != "t":
-        yearfind()
+        yearfind(data_gadget)
         user_input = input("\nApakah Anda ingin mengetahui entry data lainnya?(Ketik 't' untuk 'tidak' dan ketik apapun untuk melanjutkan): ")

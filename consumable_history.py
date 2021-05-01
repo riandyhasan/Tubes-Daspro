@@ -1,15 +1,11 @@
 import datetime
 import time
-from csv import data_consumable_history
 
-data_consumable_return = data_consumable_history
-
-# print(data_consumable_return)
-data_consumable_return_copy = data_consumable_return[:]
-data_consumable_return_copy_sorted = sorted(data_consumable_return_copy, key=lambda x: datetime.datetime.strptime(x[3], "%d/%m/%Y").strftime("%Y-%m-%d"), reverse= True)
-# print(data_consumable_return_copy_sorted )
-
-def riwayatambil():
+def riwayatambil(data_consumable_return):
+    # print(data_consumable_return)
+    data_consumable_return_copy = data_consumable_return[:]
+    data_consumable_return_copy_sorted = sorted(data_consumable_return_copy, key=lambda x: datetime.datetime.strptime(x[3], "%d/%m/%Y").strftime("%Y-%m-%d"), reverse= True)
+    # print(data_consumable_return_copy_sorted )
     for i in range(len(data_consumable_return_copy_sorted)):
         print("ID pengembalian: ", data_consumable_return_copy_sorted[i][0])
         print("Nama Pengambil: ", data_consumable_return_copy_sorted[i][1])

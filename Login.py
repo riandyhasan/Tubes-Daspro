@@ -1,4 +1,3 @@
-from csv import data_user
 from hashing import *
 
 def validate_account(log_username, log_password, data, n):
@@ -9,7 +8,7 @@ def validate_account(log_username, log_password, data, n):
       idx = i
   return (idx)
 
-def login():
+def login(data_user):
   print("================================")
   print("============ LOGIN =============")
   print("================================\n")

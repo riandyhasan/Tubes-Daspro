@@ -1,9 +1,4 @@
-from csv import data_gadget, data_consumable
-
-datas_gadget = data_gadget
-datas_consum = data_consumable
-
-def hapusitem():
+def hapusitem(datas_gadget, datas_consum):
     id = input("Masukkan ID item: ")
     id_check = False
     if (id[0] == "G"):

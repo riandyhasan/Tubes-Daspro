@@ -1,5 +1,3 @@
-from csv import data_gadget
-
 def rarity_check(find, gadget_rarity):
     check = False
     if (find == gadget_rarity):
@@ -7,7 +5,7 @@ def rarity_check(find, gadget_rarity):
     return check
 
 
-def rarityfind():
+def rarityfind(data_gadget):
   rare = input("\nMasukkan rarity: ")
 
   print("\nHasil pencarian:")
@@ -25,14 +23,13 @@ def rarityfind():
       print("Tidak ada gadget yang ditemukan")
   
 
-def carirarity():
+def carirarity(data_gadget):
   print("======================================")
   print("============ CARI RARITY =============")
   print("======================================")
-
-  rarityfind()
+  rarityfind(data_gadget)
   
   user_input = input("\nApakah Anda ingin mengetahui entry data lainnya?(Ketik 't' untuk 'tidak' dan ketik apapun untuk melanjutkan): ")
   while user_input != "t":
-      rarityfind()
+      rarityfind(data_gadget)
       user_input = input("\nApakah Anda ingin mengetahui entry data lainnya?(Ketik 't' untuk 'tidak' dan ketik apapun untuk melanjutkan): ")

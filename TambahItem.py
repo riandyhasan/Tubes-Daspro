@@ -1,8 +1,4 @@
-from csv import data_gadget, data_consumable
-
-data_consum = data_consumable
-
-def tambahitem():
+def tambahitem(data_gadget, data_consum):
     id = input("Masukkan ID: ")
     id_check = False
     if (id[0] == "G"):
@@ -11,6 +7,9 @@ def tambahitem():
                 id_check = True
         if (id_check):
             print("Gagal menambahkan item karena ID sudah ada.")
+            user_input = input("Ingin mengulang proses lagi? (Ketik 't' untuk 'tidak' dan apapun untuk melanjutkan): ")
+            if user_input != "t":
+                tambahitem(data_gadget, data_consum)
         else:
             name = input("Masukkan Nama: ")
             desc = input("Masukkan Deskripsi: ")
@@ -20,6 +19,9 @@ def tambahitem():
 
             if rarity != "C" and rarity != "B" and rarity != "A" and rarity != "S":
                 print("Input rarity tidak valid!")
+                user_input = input("Ingin mengulang proses lagi? (Ketik 't' untuk 'tidak' dan apapun untuk melanjutkan): ")
+                if user_input != "t":
+                     tambahitem(data_gadget, data_consum)
             else:
                 add_gadget = [id, name, desc, amount, rarity, year]
                 data_gadget.append(add_gadget)
@@ -29,6 +31,9 @@ def tambahitem():
                 id_check = True
         if (id_check):
             print("Gagal menambahkan item karena ID sudah ada.")
+            user_input = input("Ingin mengulang proses lagi? (Ketik 't' untuk 'tidak' dan apapun untuk melanjutkan): ")
+            if user_input != "t":
+                tambahitem(data_gadget, data_consum)
         else:
             name = input("Masukkan Nama: ")
             desc = input("Masukkan Deskripsi: ")
@@ -37,6 +42,9 @@ def tambahitem():
 
             if rarity != "C" and rarity != "B" and rarity != "A" and rarity != "S":
                 print("Input rarity tidak valid!")
+                user_input = input("Ingin mengulang proses lagi? (Ketik 't' untuk 'tidak' dan apapun untuk melanjutkan): ")
+                if user_input != "t":
+                    tambahitem(data_gadget, data_consum)
             else:
                 add_consum = [id, name, desc, amount, rarity]
                 data_consum.append(add_consum)

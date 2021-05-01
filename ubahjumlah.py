@@ -1,9 +1,4 @@
-from csv import data_gadget, data_consumable, header3, header5, convert_datas_to_string
-
-datas_gadget = data_gadget
-datas_consum = data_consumable
-
-def ubahjumlah():
+def ubahjumlah(datas_gadget, datas_consum):
     id = input("Masukkan ID: ")
     id_check = False
     if (id[0] == "G"):

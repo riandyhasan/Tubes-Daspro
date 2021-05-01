@@ -1,16 +1,10 @@
-from csv import data_gadget, data_gadget_return, data_gadget_borrow
+def kembalikan(borrow_datas_gadget, return_data_gadget, datas_gadget):
+  id_return = return_data_gadget[-1][0]
+  add_id_return = id_return + 1
 
-borrow_datas_gadget = data_gadget_borrow
-return_data_gadget = data_gadget_return
-datas_gadget = data_gadget
-
-id_return = return_data_gadget[-1][0]
-add_id_return = id_return + 1
-
-for i in range(len(borrow_datas_gadget)):
-  print((i+1), borrow_datas_gadget[i][2])
-
-def kembalikan():
+  for i in range(len(borrow_datas_gadget)):
+    print((i+1), borrow_datas_gadget[i][2])
+    
   nomor_peminjaman = int(input("Masukkan nomor peminjaman: "))
   cek_nomor = False
   for i in range(len(borrow_datas_gadget)):

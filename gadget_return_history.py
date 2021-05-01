@@ -1,23 +1,18 @@
 import datetime
 import time
-from csv import data_gadget_return, data_user, data_gadget, data_gadget_borrow, lines
 
-data_gadget_return_copy = data_gadget_return[:]
-data_gadget_return_copy_sorted = sorted(data_gadget_return_copy, key=lambda x: datetime.datetime.strptime(x[2], "%d/%m/%Y").strftime("%Y-%m-%d"), reverse= True)
-
-
-nama = [i[2] for i in data_user]
-id = [i[0] for i in data_gadget_return_copy_sorted]
-id_peminjaman = [i[1] for i in data_gadget_return_copy_sorted]
-id_borrow = [i[0] for i in data_gadget_borrow]
-id_gadget = [i[0] for i in data_gadget]
-id_gadget_borrow = [i[2] for i in data_gadget_borrow]
-id_user_borrow = [i[1] for i in data_gadget_borrow]
-id_user = [i[0] for i in data_user]
-
-
-def riwayatkembali():
-    for i in range(len(lines)):
+def riwayatkembali(data_gadget_return, data_user, data_gadget, data_gadget_borrow):
+    data_gadget_return_copy = data_gadget_return[:]
+    data_gadget_return_copy_sorted = sorted(data_gadget_return_copy, key=lambda x: datetime.datetime.strptime(x[2], "%d/%m/%Y").strftime("%Y-%m-%d"), reverse= True)
+    nama = [i[2] for i in data_user]
+    id = [i[0] for i in data_gadget_return_copy_sorted]
+    id_peminjaman = [i[1] for i in data_gadget_return_copy_sorted]
+    id_borrow = [i[0] for i in data_gadget_borrow]
+    id_gadget = [i[0] for i in data_gadget]
+    id_gadget_borrow = [i[2] for i in data_gadget_borrow]
+    id_user_borrow = [i[1] for i in data_gadget_borrow]
+    id_user = [i[0] for i in data_user]
+    for i in range(len(data_gadget_borrow)):
         print("ID pengambilan: ", id[i])
         index_id_peminjam_borrow = id_borrow.index(id_peminjaman[i])
         id_peminjam_borrow = id_user_borrow[index_id_peminjam_borrow]

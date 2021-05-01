@@ -1,5 +1,4 @@
 from hashing import *
-from csv import data_user
 
 def username_availability(reg_username, data_username):
     available = True
@@ -12,7 +11,7 @@ def modify_data(id, username, name, address, password, role):
     data = [id+1, username, name, address, password, role]
     return data
 
-def check_availability():
+def check_availability(data_user):
   id = 165000 + len(data_user)
   name = input("\nMasukkan nama: ")
   username = input("Masukkan username: ")
@@ -34,15 +33,15 @@ def check_availability():
   else:
     user_input = input("\nUsername telah digunakan! \nIngin mengulang proses register lagi? (Ketik 't' untuk 'tidak' dan apapun untuk melanjutkan): ")
     if user_input != "t":
-      check_availability()
+      check_availability(data_user)
 
 
-def register():
+def register( data_user):
   print("===================================")
   print("============ REGISTER =============")
   print("===================================\n")
 
-  data_user = check_availability()
+  data_user = check_availability( data_user)
 
   return data_user
 
