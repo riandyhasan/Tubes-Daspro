@@ -34,12 +34,13 @@ def check_availability(data_user):
     user_input = input("\nUsername telah digunakan! \nIngin mengulang proses register lagi? (Ketik 't' untuk 'tidak' dan apapun untuk melanjutkan): ")
     if user_input != "t":
       check_availability(data_user)
+    return data_user
 
 
 def register( data_user):
   print("\n============ REGISTER =============\n")
 
-  data_user = check_availability( data_user)
+  data_user = check_availability(data_user)
 
   return data_user
 

@@ -1,6 +1,6 @@
 def kembalikan(borrow_datas_gadget, return_data_gadget, datas_gadget):
   print("\n============ KEMBALIKAN =============\n")
-  id_return = return_data_gadget[-1][0]
+  id_return = len(return_data_gadget)
   add_id_return = id_return + 1
 
   for i in range(len(borrow_datas_gadget)):

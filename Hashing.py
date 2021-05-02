@@ -12,10 +12,6 @@ class SHA3():
         self.capacity = self.state_value - self.rate
         self.bus = self.rate + self.capacity
 
-    def __str__(self):
-        return f'SHA3-{self.output}'
-
-
     def ascii2bin(self, asc):
         '''Convert ascii string to binary string'''
         return ''.join('{:08b}'.format(ord(char)) for char in asc)

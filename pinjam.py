@@ -1,6 +1,6 @@
 def pinjam(id_user, datas_gadget, history_data_gadget):
   print("\n============ PINJAM =============\n")
-  id_history = history_data_gadget[-1][0]
+  id_history = len(history_data_gadget)
   add_id_history = id_history + 1
   id = input("Masukkan ID item: ")
   cek_id = False

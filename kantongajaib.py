@@ -23,6 +23,7 @@ if (check_folder(args.folder)):
     i = open(args.folder + '\\gadget_borrow_history.csv','r')
     j = open(args.folder + '\\consumable.csv','r')
     k = open(args.folder + '\\consumable_history.csv','r')
+    
     raw_lines1 = f.readlines()
     f.close()
     line = [raw_line.replace('"', "") for raw_line in raw_lines1]

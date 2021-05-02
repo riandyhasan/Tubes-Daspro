@@ -7,6 +7,8 @@ def riwayatpinjam(data_user, data_gadget_borrow, data_gadget):
     data_gadget_borrow_copy_sorted = sorted(data_gadget_borrow_copy, key=lambda x: datetime.datetime.strptime(x[3], "%d/%m/%Y").strftime("%Y-%m-%d"), reverse= True)
     nama = [i[2] for i in data_user]
     id_peminjam = [i[1] for i in data_gadget_borrow_copy_sorted]
+    for i in range(len(id_peminjam)):
+        id_peminjam[i] = int(id_peminjam[i])
     id_gadget_pinjam = [i[2] for i in data_gadget_borrow_copy_sorted]
     id_gadget = [i[0] for i in data_gadget]
     id = [i[0] for i in data_user]

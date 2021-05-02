@@ -8,12 +8,18 @@ def riwayatkembali(data_gadget_return, data_user, data_gadget, data_gadget_borro
     nama = [i[2] for i in data_user]
     id = [i[0] for i in data_gadget_return_copy_sorted]
     id_peminjaman = [i[1] for i in data_gadget_return_copy_sorted]
+    for i in range(len(id_peminjaman)):
+        id_peminjaman[i] = int(id_peminjaman[i])
     id_borrow = [i[0] for i in data_gadget_borrow]
+    for i in range(len(id_borrow)):
+        id_borrow[i] = int(id_borrow[i])
     id_gadget = [i[0] for i in data_gadget]
     id_gadget_borrow = [i[2] for i in data_gadget_borrow]
     id_user_borrow = [i[1] for i in data_gadget_borrow]
+    for i in range(len(id_user_borrow)):
+        id_user_borrow[i] = int(id_user_borrow[i])
     id_user = [i[0] for i in data_user]
-    for i in range(len(data_gadget_borrow)):
+    for i in range(len(data_gadget_return)):
         print("ID pengambilan: ", id[i])
         index_id_peminjam_borrow = id_borrow.index(id_peminjaman[i])
         id_peminjam_borrow = id_user_borrow[index_id_peminjam_borrow]
