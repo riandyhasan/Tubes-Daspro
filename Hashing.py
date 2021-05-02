@@ -1,10 +1,8 @@
-# algorithm reference: 'https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf'
-
 class SHA3():
 
-    def __init__(self, output=224):
+    def __init__(self, output=256):
   
-        rate = {224: 1152, 256: 1088, 384: 832, 512: 576}
+        rate = {224: 1152, 256: 1088, 384: 832, 512: 576} # Panjang digest yang tersedia
         self.output = output
         assert self.output in rate, 'Invalid bit length'
         self.rate = rate[self.output]
@@ -12,28 +10,23 @@ class SHA3():
         self.capacity = self.state_value - self.rate
         self.bus = self.rate + self.capacity
 
+    # Mengubah ascii ke binary
     def ascii2bin(self, asc):
-        '''Convert ascii string to binary string'''
         return ''.join('{:08b}'.format(ord(char)) for char in asc)
 
-
+    # Mengubah binary ke hexadecimal
     def bin2hex(self, bn):
         return ''.join('{:0x}'.format(int(bn[i:i+4], 2)) for i in range(0, len(bn), 4))
 
-
+    # Penambahan dengan bit-bit pengganjal
     def pad_with(self, x, m):
-        '''pad m using pad10*1 algorithm such that m+pad is a positive multiple of x'''
         assert x > 0 and m >= 0
-        # the pad should be surrounded by '1' with either sides,
-        # 0* indicates number of zeros stuffed in between
-        # hence, the name 10*1
         j = (-m - 2) % x
         pad = '1' + ('0' * j) + '1'
         return pad
 
-
+    # Bagian praproses
     def preprocess(self, message):
-        '''Pad the message and break it into chunks'''
         message = self.ascii2bin(message)
         padded_message = message + self.pad_with(self.rate, len(message))
         message_blocks = [padded_message[i:i + self.rate] for i in range(0, len(padded_message), self.rate)]
@@ -41,8 +34,6 @@ class SHA3():
 
 
     def change_conventions(self, state):
-        ''' every coordinate is added with 2 and modulo 5, because of labelling convention mentioned in
-            documentation, (0, 0) should be the lan at center of state.'''
         state_ = [[['' for z in range(64)] for y in range(5)] for x in range(5)]
 
         for x in range(5):
@@ -51,13 +42,6 @@ class SHA3():
         return state_
 
     def theta(self, state):
-        '''1. For all pairs (x, z) such that 0≤x<5 and 0≤z<w, let
-                C[x,z]=A[x,0,z] ⊕ A[x,1,z] ⊕ A[x,2,z] ⊕ A[x,3,z] ⊕ A[x,4,z].
-            2. For all pairs (x, z) such that 0≤x<5 and 0≤z<w let
-                D[x, z]=C[(x-1) mod 5, z] ⊕ C[(x+1) mod 5, (z–1) mod w].
-            3. For all triples (x, y, z) such that 0≤x<5, 0≤y<5, and 0≤z<w, let
-                A′[x,y,z] = A[x,y,z] ⊕ D[x,z].'''
-
         def C(x, z):
             return self.xor(*[state[x][i][z] for i in range(5)])
 
@@ -74,20 +58,12 @@ class SHA3():
 
 
     def rot(self, word, shift):
-        ''' rotate the word right side with given shift,
-            >>> rot('12345', 2) == '45123'
-        '''
+        # merotasi kata ,
+        # rot('12345', 2) == '45123'
         shift = shift % len(word)
         return word[-shift:]+word[:-shift]
 
     def rho(self, state):
-        ''' 1. For all z such that 0≤z<w, let A′ [0,0,z] = A[0,0,z].
-            2. Let(x,y)=(1,0).
-            3. For t from 0 to 23:
-                    a. for all z such that 0≤z<w, let A′[x, y, z] = A[x, y, (z–(t+1)(t+2)/2) mod w];
-                    b. let (x, y) = (y, (2x+3y) mod 5).
-            4. Return A′.'''
-
         rot_vals = [[153, 231, 3, 10, 171],
                     [55, 276, 36, 300, 6],
                     [28, 91, 0, 1, 190],
@@ -103,8 +79,6 @@ class SHA3():
         return state_
 
     def pi(self, state):
-        '''For all triples (x, y, z) such that 0≤x<5, 0≤y<5, and 0≤z<w, let
-                A′[x, y, z]= A[(x + 3y) mod 5, x, z].'''
         state_ = [[['' for z in range(64)] for y in range(5)] for x in range(5)]
         for x in range(5):
             for y in range(5):
@@ -139,7 +113,6 @@ class SHA3():
 
 
     def lane(self, state, x, y):
-        '''return 1D lane at given (x, y) coordinate'''
         lane_ = ''.join(state[x][y])
         assert len(state[x][y]) == 64
         assert len(lane_) == 64, (x, y)
@@ -152,30 +125,22 @@ class SHA3():
         
 
     def form_state(self, data):
-        '''Forms a cuboid matrix with dimensions 5x5x64'''
 
-        # verify the length of data == 1600
         assert len(data) == 1600
-        # create an empty state of 5x5x64 dimensions
         state = [[['' for z in range(64)] for y in range(5)] for x in range(5)]
-        # replace the items of state with that of data
         for x in range(5):
             for y in range(5):
                 for z in range(64):
                     state[x][y][z] = data[64 * ((5 * y) + x) + z]
-
-        # verify that unpacked_state == data 
         assert data == ''.join(self.plane(state, i) for i in range(5))
         return self.change_conventions(state)
 
 
     def xor_2(self, a, b):
-        '''Performs binary XOR operation of 2 words'''
         return ''.join('0' if i == j else '1' for i, j in zip(a, b))
 
 
     def xor(self, *words):
-        '''Performs binary XOR operation of multiple words'''
         first, *words = words
         result = first
         for word in words:
@@ -184,7 +149,6 @@ class SHA3():
         return result
 
     def _round(self, b):
-        '''Compute a single round on data "b" '''
         b = self.theta(b)
         b = self.rho(b)
         b = self.pi(b)
@@ -192,9 +156,8 @@ class SHA3():
         b = self.iota(b)
         return b
 
-
+    # permutasi f
     def f(self, r, c):
-        '''Compute 24 rounds'''
         b = r + c
         assert len(b) == 1600
         state = self.form_state(b)
@@ -205,17 +168,16 @@ class SHA3():
         unpacked_state = ''.join(self.plane(state, i) for i in range(5))
         return unpacked_state[:self.rate], unpacked_state[self.rate:]
 
+    # Fungsi hash SHA-3
     def _hash(self, message):
-        '''Computes SHA3 Hash'''
         message = self.preprocess(message)
-        # intiial r, c are zero filled vectors
+        # S diinisiai dengan 0 (panjangnya b = r + c)
         r = '0' * self.rate
         c = '0' * self.capacity
         for block in message:
-            # f input is previous r ⊕ message_block
+            # memasukan ke permutasi f
             f_inp = self.xor_2(block, r)
             r, c = self.f(f_inp, c)
 
-        # output is truncated MSBs of result at length of choosen bits
         value = r[:self.output]
         return self.bin2hex(value)
