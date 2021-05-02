@@ -1,4 +1,5 @@
 def tambahitem(data_gadget, data_consum):
+    print("\n============ TAMBAH ITEM =============\n")
     id = input("Masukkan ID: ")
     id_check = False
     if (id[0] == "G"):
@@ -50,6 +51,9 @@ def tambahitem(data_gadget, data_consum):
                 data_consum.append(add_consum)
     else:
         print("Gagal menambahkan item karena ID tidak valid")
+        user_input = input("Ingin mengulang proses lagi? (Ketik 't' untuk 'tidak' dan apapun untuk melanjutkan): ")
+        if user_input != "t":
+            tambahitem(data_gadget, data_consum)
     
     return data_gadget, data_consum
 

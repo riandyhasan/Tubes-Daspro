@@ -1,4 +1,5 @@
 def ubahjumlah(datas_gadget, datas_consum):
+    print("\n============ UBAH JUMLAH =============\n")
     id = input("Masukkan ID: ")
     id_check = False
     if (id[0] == "G"):
@@ -7,6 +8,9 @@ def ubahjumlah(datas_gadget, datas_consum):
                 id_check = False
         if (id_check):
             print("Tidak ada item dengan ID tersebut.")
+            user_input = input("Ingin mengulang proses lagi? (Ketik 't' untuk 'tidak' dan apapun untuk melanjutkan): ")
+            if user_input != "t":
+                ubahjumlah(datas_gadget, datas_consum)
         else:
             change_gadget = int(input("Masukkan Jumlah: "))
 
@@ -24,6 +28,9 @@ def ubahjumlah(datas_gadget, datas_consum):
                 id_check = False
         if (id_check):
             print("Tidak ada item dengan ID tersebut.")
+            user_input = input("Ingin mengulang proses lagi? (Ketik 't' untuk 'tidak' dan apapun untuk melanjutkan): ")
+            if user_input != "t":
+                ubahjumlah(datas_gadget, datas_consum)
         else:
             change_consumable = int(input("Masukkan Jumlah: "))
 
@@ -37,6 +44,9 @@ def ubahjumlah(datas_gadget, datas_consum):
                 print(str(change_consumable) + " " + datas_consum[i][1] + " berhasil dibuang. Stok sekarang: " + str(jumlah_consumable))
     else:
         print("Gagal menambahkan item karena ID tidak valid")
+        user_input = input("Ingin mengulang proses lagi? (Ketik 't' untuk 'tidak' dan apapun untuk melanjutkan): ")
+        if user_input != "t":
+            ubahjumlah(datas_gadget, datas_consum)
     
     return datas_gadget, datas_consum
 

@@ -37,9 +37,7 @@ def check_availability(data_user):
 
 
 def register( data_user):
-  print("===================================")
-  print("============ REGISTER =============")
-  print("===================================\n")
+  print("\n============ REGISTER =============\n")
 
   data_user = check_availability( data_user)
 

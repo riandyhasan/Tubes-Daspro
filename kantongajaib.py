@@ -175,7 +175,7 @@ if (check_folder(args.folder)):
     main(data_user, data_gadget, data_consumable, data_gadget_borrow, data_gadget_return, data_consumable_history)
 
 else:
-    print("Tidak ada nama folder yang diberikan!")
+    print("Tidak ditemukan folder dengan nama yang diberikan!")
 
 
 

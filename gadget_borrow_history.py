@@ -1,7 +1,8 @@
 import datetime
 import time
 
-def riwayatpinjam(data_user, data_gadget_borrow, data_gadget):  
+def riwayatpinjam(data_user, data_gadget_borrow, data_gadget):
+    print("\n============ RIWAYAT PINJAM =============\n")  
     data_gadget_borrow_copy = data_gadget_borrow[:]
     data_gadget_borrow_copy_sorted = sorted(data_gadget_borrow_copy, key=lambda x: datetime.datetime.strptime(x[3], "%d/%m/%Y").strftime("%Y-%m-%d"), reverse= True)
     nama = [i[2] for i in data_user]

@@ -1,4 +1,5 @@
 def kembalikan(borrow_datas_gadget, return_data_gadget, datas_gadget):
+  print("\n============ KEMBALIKAN =============\n")
   id_return = return_data_gadget[-1][0]
   add_id_return = id_return + 1
 
@@ -21,5 +22,8 @@ def kembalikan(borrow_datas_gadget, return_data_gadget, datas_gadget):
     print("Item " + borrow_datas_gadget[i][2] + " (x" + str(jumlah_pengembalian) + ") telah dikembalikan")
   else:
     print("Tidak ada item yang dipinjam")
+    user_input = input("Ingin mengulang proses lagi? (Ketik 't' untuk 'tidak' dan apapun untuk melanjutkan): ")
+    if user_input != "t":
+      kembalikan(borrow_datas_gadget, return_data_gadget, datas_gadget)
 
   return datas_gadget, borrow_datas_gadget, return_data_gadget

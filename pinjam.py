@@ -1,4 +1,5 @@
 def pinjam(id_user, datas_gadget, history_data_gadget):
+  print("\n============ PINJAM =============\n")
   id_history = history_data_gadget[-1][0]
   add_id_history = id_history + 1
   id = input("Masukkan ID item: ")
@@ -10,6 +11,9 @@ def pinjam(id_user, datas_gadget, history_data_gadget):
               cek_id = False
       if (cek_id):
           print("Tidak ada item dengan ID tersebut.")
+          user_input = input("Ingin mengulang proses lagi? (Ketik 't' untuk 'tidak' dan apapun untuk melanjutkan): ")
+          if user_input != "t":
+              pinjam(id_user, datas_gadget, history_data_gadget)
       else:
           username_id = id_user
           tanggal_peminjaman = input("Tanggal peminjaman: ")
@@ -21,6 +25,10 @@ def pinjam(id_user, datas_gadget, history_data_gadget):
           print("Item" + datas_gadget[i][1] + "(x" + str(jumlah_peminjaman) + ") berhasil dipinjam!")
   else:
       print("Gagal menambahkan item karena ID tidak valid")
+      user_input = input("Ingin mengulang proses lagi? (Ketik 't' untuk 'tidak' dan apapun untuk melanjutkan): ")
+      if user_input != "t":
+        pinjam(id_user, datas_gadget, history_data_gadget)
+      
     
   return datas_gadget, history_data_gadget
 

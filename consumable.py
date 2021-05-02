@@ -7,6 +7,7 @@ def check_jumlah(jumlah):
     return check
 
 def minta(id_user, data, data_consumable_history, data_user):
+    print("\n============ MINTA =============\n")
     id = input("Masukkan ID item: ")
     
     kode = [i[0] for i in data[:]]

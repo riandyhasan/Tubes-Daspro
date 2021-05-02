@@ -2,6 +2,7 @@ import datetime
 import time
 
 def riwayatambil(data_consumable_return):
+    print("\n============ RIWAYAT AMBIL =============\n")
     # print(data_consumable_return)
     data_consumable_return_copy = data_consumable_return[:]
     data_consumable_return_copy_sorted = sorted(data_consumable_return_copy, key=lambda x: datetime.datetime.strptime(x[3], "%d/%m/%Y").strftime("%Y-%m-%d"), reverse= True)

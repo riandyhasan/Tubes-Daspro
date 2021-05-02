@@ -24,9 +24,7 @@ def rarityfind(data_gadget):
   
 
 def carirarity(data_gadget):
-  print("======================================")
-  print("============ CARI RARITY =============")
-  print("======================================")
+  print("\n============ CARI RARITY =============\n")
   rarityfind(data_gadget)
   
   user_input = input("\nApakah Anda ingin mengetahui entry data lainnya?(Ketik 't' untuk 'tidak' dan ketik apapun untuk melanjutkan): ")

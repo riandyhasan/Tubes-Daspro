@@ -38,9 +38,7 @@ def yearfind(data_gadget):
 
 
 def caritahun(data_gadget):
-    print("======================================")
-    print("============ CARI TAHUN ==============")
-    print("======================================")
+    print("\n============ CARI TAHUN ==============\n")
 
     yearfind(data_gadget)
 

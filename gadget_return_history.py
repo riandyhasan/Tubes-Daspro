@@ -2,6 +2,7 @@ import datetime
 import time
 
 def riwayatkembali(data_gadget_return, data_user, data_gadget, data_gadget_borrow):
+    print("\n============ RIWAYAT KEMBALI =============\n")
     data_gadget_return_copy = data_gadget_return[:]
     data_gadget_return_copy_sorted = sorted(data_gadget_return_copy, key=lambda x: datetime.datetime.strptime(x[2], "%d/%m/%Y").strftime("%Y-%m-%d"), reverse= True)
     nama = [i[2] for i in data_user]
